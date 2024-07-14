@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useData } from "./components/Context";
 import TabContent from "./components/TabContent/TabContent";
 import Tabs from "./components/Tabs";
+import MainContainer from "./components/Container/MainContainer";
+import { NextUIProvider } from "@nextui-org/system";
 
 function App() {
   const { setEstikers } = useData();
@@ -24,11 +26,13 @@ function App() {
   }, []);
 
   return (
-    <div className="grid md:grid-cols-12 grid-cols-1 md:grid-rows-1 grid-rows-12 w-full h-full">
-      <div className="col-span-7 bg-red-300 md:row-span-12 row-span-11">A</div>
-      <TabContent />
-      <Tabs />
-    </div>
+    <NextUIProvider>
+      <div className="grid md:grid-cols-12 grid-cols-1 md:grid-rows-1 grid-rows-12 w-full h-full">
+        <MainContainer />
+        <TabContent />
+        <Tabs />
+      </div>
+    </NextUIProvider>
   );
 }
 

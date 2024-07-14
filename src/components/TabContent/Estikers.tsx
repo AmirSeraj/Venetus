@@ -5,8 +5,8 @@ const Estikers = () => {
   return (
     <div className="grid grid-cols-2 gap-1 h-[100vh] overflow-y-scroll p-2">
       {estikers.map((estiker, index) => (
-        <div className="w-[205px] h-[205px] rounded-lg overflow-hidden shadow-lg mb-1 cursor-pointer">
-          <img className="w-full h-full aspect-square" src={estiker} key={index} />
+        <div className="w-full h-auto rounded-lg shadow-lg mb-1 cursor-pointer">
+          <img className="w-full h-auto" src={estiker} key={index} />
         </div>
       ))}
     </div>
