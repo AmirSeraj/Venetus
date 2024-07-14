@@ -7,7 +7,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
 
-    './node_modules/@nextui-org/theme/dist/components/(button|tabs|input).js'
+    './node_modules/@nextui-org/theme/dist/components/(button|tabs|input|tooltip).js'
   ],
   theme: {
     extend: {},

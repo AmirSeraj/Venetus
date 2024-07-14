@@ -1,11 +1,11 @@
-import { Button } from "@nextui-org/button";
-import React from "react";
+import MainContent from "./MainContent";
+import NavBar from "./NavBar";
 
 const MainContainer = () => {
   return (
-    <div className="col-span-7 md:row-span-12 row-span-11 flex flex-col">
-      ddddd
-      <Button color="primary">deed</Button>
+    <div className="col-span-8 md:row-span-12 bg-gray-200 row-span-11 flex flex-col">
+      <NavBar />
+      <MainContent />
     </div>
   );
 };

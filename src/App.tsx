@@ -27,10 +27,13 @@ function App() {
 
   return (
     <NextUIProvider>
-      <div className="grid md:grid-cols-12 grid-cols-1 md:grid-rows-1 grid-rows-12 w-full h-full">
-        <MainContainer />
-        <TabContent />
+      <div
+        className="grid md:grid-cols-12 grid-cols-1 md:grid-rows-1 grid-rows-12 w-full h-full"
+        dir="rtl"
+      >
         <Tabs />
+        <TabContent />
+        <MainContainer />
       </div>
     </NextUIProvider>
   );
