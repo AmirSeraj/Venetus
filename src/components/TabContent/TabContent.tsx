@@ -3,6 +3,7 @@ import Estikers from "./Estikers";
 import TextPicker from "./TextPicker";
 import Upload from "./Upload";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const TabContent = ({addText}:{addText:any}) => {
   const { tabSelected } = useData();
   return (

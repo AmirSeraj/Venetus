@@ -1,13 +1,14 @@
 // import MainContent from "./MainContent";
 import NavBar from "./NavBar";
-import { fabric } from "fabric";
-import { FabricJSCanvas, useFabricJSEditor } from "fabricjs-react";
-import { useEffect, useState } from "react";
+// import { fabric } from "fabric";
+import { FabricJSCanvas } from "fabricjs-react";
+// import { useEffect, useState } from "react";
 
 const MainContainer = ({
   onReady,
   removeSelectedObject,
 }: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onReady: any;
   removeSelectedObject: () => void;
 }) => {

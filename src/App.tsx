@@ -1,20 +1,20 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect } from "react";
 import { useData } from "./components/Context";
 import Tabs from "./components/Tabs";
 import { NextUIProvider } from "@nextui-org/system";
 import TabContent from "./components/TabContent/TabContent";
 import MainContainer from "./components/Container/MainContainer";
-import { useFabricJSEditor, FabricJSCanvas } from "fabricjs-react";
-import { fabric } from "fabric";
+import { FabricJSCanvas, useFabricJSEditor } from "fabricjs-react";
 
 function App() {
   const { setEstikers, cropImage } = useData();
   const { editor, onReady } = useFabricJSEditor();
 
-  const history = [];
+  // const history: fabric.Object[] = [];
 
   useEffect(() => {
-    if (!editor || !fabric) {
+    if (!editor || !FabricJSCanvas) {
       return;
     }
 
@@ -24,10 +24,11 @@ function App() {
     }
 
     if (!editor.canvas.__eventListeners["mouse:move"]) {
-      editor.canvas.on("mouse:move", function (opt) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      editor.canvas.on("mouse:move", function (this: any, opt: fabric.IEvent<MouseEvent>) {
         if (this.isDragging) {
-          let e = opt.e;
-          let vpt = this.viewportTransform;
+          const e = opt.e;
+          const vpt = this.viewportTransform;
           vpt[4] += e.clientX - this.lastPosX;
           vpt[5] += e.clientY - this.lastPosY;
           this.requestRenderAll();
@@ -38,7 +39,8 @@ function App() {
     }
 
     if (!editor.canvas.__eventListeners["mouse:up"]) {
-      editor.canvas.on("mouse:up", function (opt) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      editor.canvas.on("mouse:up", function (this:any) {
         // on mouse up we want to recalculate new interaction
         // for all objects, so we call setViewportTransform
         this.setViewportTransform(this.viewportTransform);
@@ -51,7 +53,7 @@ function App() {
   }, [editor]);
 
   useEffect(() => {
-    if (!editor || !fabric) {
+    if (!editor) {
       return;
     }
     editor.canvas.setHeight(500);
@@ -60,31 +62,31 @@ function App() {
     editor.canvas.renderAll();
   }, []);
 
-  const toggleSize = () => {
-    editor.canvas.freeDrawingBrush.width === 12
-      ? (editor.canvas.freeDrawingBrush.width = 5)
-      : (editor.canvas.freeDrawingBrush.width = 12);
-  };
+  // const toggleSize = () => {
+  //   editor.canvas.freeDrawingBrush.width === 12
+  //     ? (editor.canvas.freeDrawingBrush.width = 5)
+  //     : (editor.canvas.freeDrawingBrush.width = 12);
+  // };
 
-  const undo = () => {
-    if (editor.canvas._objects.length > 0) {
-      history.push(editor.canvas._objects.pop());
-    }
-    editor.canvas.renderAll();
-  };
+  // const undo = () => {
+  //   if (editor.canvas._objects.length > 0) {
+  //     history.push(editor.canvas._objects.pop());
+  //   }
+  //   editor.canvas.renderAll();
+  // };
 
-  const redo = () => {
-    if (history.length > 0) {
-      editor.canvas.add(history.pop());
-    }
-  };
+  // const redo = () => {
+  //   if (history.length > 0) {
+  //     editor.canvas.add(history.pop());
+  //   }
+  // };
 
   const addText = () => {
-    editor.addText("inset text");
+    editor?.addText("inset text");
   };
 
   const removeSelectedObject = () => {
-    editor.canvas.remove(editor.canvas.getActiveObject());
+    editor?.canvas.remove(editor.canvas.getActiveObject());
   };
 
   useEffect(() => {
