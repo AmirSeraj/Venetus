@@ -56,7 +56,7 @@ function App() {
     if (!editor) {
       return;
     }
-    editor.canvas.setHeight(500);
+    editor.canvas.setHeight(1000);
     editor.canvas.setWidth(400);
     // addBackground();
     editor.canvas.renderAll();
