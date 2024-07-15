@@ -4,8 +4,11 @@ import { GoCopy } from "react-icons/go";
 import { Tooltip } from "@nextui-org/tooltip";
 import { SiDatabricks } from "react-icons/si";
 
-
-const NavBar = () => {
+const NavBar = ({
+  removeSelectedObject,
+}: {
+  removeSelectedObject: () => void;
+}) => {
   return (
     <div className="w-full h-[50px] flex bg-white border-b border-slate-300">
       <div className="w-[135px] border border-r border-l border-slate-300 border-t-0 border-b-0 flex justify-center items-center">
@@ -21,7 +24,7 @@ const NavBar = () => {
           shadow="lg"
         >
           <Button className="p-0" size="sm">
-            <RiDeleteBin6Line size={20} />
+            <RiDeleteBin6Line size={20} onClick={removeSelectedObject} />
           </Button>
         </Tooltip>
         <Tooltip

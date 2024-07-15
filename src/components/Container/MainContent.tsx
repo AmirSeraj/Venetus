@@ -1,17 +1,18 @@
 import { Button } from "@nextui-org/button";
-import { LegacyRef, useRef } from "react";
+import { useRef } from "react";
 
 const MainContent = () => {
-  const ImgRef = useRef<LegacyRef<HTMLDivElement>>();
+  const ImgRef = useRef<HTMLInputElement | null | undefined>();
   const handleSelectImg = () => {
-
-  }
+    ImgRef.current?.click();
+  };
   return (
     <div className="flex justify-center items-center w-full h-[calc(100vh-50px)] relative">
       <div className="absolute right-4 top-3 flex gap-2">
         <Button color="primary" onClick={handleSelectImg}>
-          <input ref={ImgRef} type="file" className="hidden"  />
-          انتخاب طرح</Button>
+          <input ref={ImgRef} type="file" className="hidden" />
+          انتخاب طرح
+        </Button>
         <div className="flex flex-col gap-1">
           <div className="w-[45px] h-[45px] border border-slate-400 rounded-lg text-xs flex justify-center items-center">
             طرح 1
